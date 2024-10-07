@@ -14,7 +14,10 @@ function ProductCard({
   onShopNow: () => void;
 }) {
   return (
-    <div className='bg-white rounded-[58px] overflow-hidden p-6 flex flex-col h-full z-10'>
+    <div
+      className='bg-white rounded-[58px] overflow-hidden p-6 flex flex-col h-full z-10'
+      id='shop'
+    >
       <div className='rounded-[58px] aspect-square relative overflow-hidden mb-4'>
         <Image
           src={product.imageSrc}
@@ -129,12 +132,12 @@ export default function Shop() {
     setIsPopupOpen(false);
   };
 
-  const totalSlides = Math.ceil(PRODUCTS.length / slidesToScroll); // Use slidesToScroll
+  const totalSlides = Math.ceil(PRODUCTS.length / slidesToScroll);
 
   return (
     <>
       {/* Wave SVG to "subtract" the top */}
-      <div className='relative py-16 overflow-hidden w-full bg-teal-500 text-white'>
+      <div className='relative py-8 lg:py-16 overflow-hidden w-full bg-teal-500 text-white'>
         <div className='absolute bottom-0 left-0 w-full pointer-events-none'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
