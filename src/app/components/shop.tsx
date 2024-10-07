@@ -155,7 +155,7 @@ export default function Shop() {
 
       <section className='bg-teal-500 pt-12 pb-20'>
         {/* Title and description */}
-        <div className='relative z-10'>
+        <div className='relative z-10 px-4'>
           <div className='flex flex-col items-center text-center max-w-3xl mx-auto'>
             <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6'>
               Shop Iyasu

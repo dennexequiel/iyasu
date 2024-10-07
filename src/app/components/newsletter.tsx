@@ -41,7 +41,7 @@ const NewsletterForm: React.FC<{
 );
 
 const CTASection: React.FC<{ scrollToShop: () => void }> = ({ scrollToShop }) => (
-  <section className='py-16 text-center bg-teal-500'>
+  <section className='px-4 py-16 text-center bg-teal-500'>
     <h2 className='text-3xl font-bold text-white mb-4'>
       Start Your Path to Simple Healing Today.
     </h2>
@@ -118,7 +118,7 @@ export default function Newsletter() {
 
   return (
     <>
-      <section className='bg-teal-50 p-8 rounded-lg text-center py-16'>
+      <section className='bg-teal-50 px-4 rounded-lg text-center py-16'>
         <h2 className='text-3xl font-bold text-teal-500 mb-4'>
           Stay Updated With Iyasu
         </h2>
