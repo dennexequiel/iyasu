@@ -7,6 +7,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useScrollTo } from '../hooks/useScrollTo';
 
 const OPTIONS: EmblaOptionsType = { loop: true };
 const AUTOPLAY_OPTIONS = {
@@ -79,6 +80,10 @@ const useCarousel = () => {
 export default function HeroCarousel() {
   const desktopCarousel = useCarousel();
   const mobileCarousel = useCarousel();
+  const scrollOffset = 350;
+  const scrollTo = useScrollTo(scrollOffset);
+
+  const scrollToShop = () => scrollTo('shop');
 
   const renderDots = (carousel: ReturnType<typeof useCarousel>) => (
     <div className='flex justify-center'>
@@ -124,7 +129,7 @@ export default function HeroCarousel() {
                 and accessible pain relief.
               </p>
               <div className='space-x-4'>
-                <button className='uppercase bg-white text-teal-500 font-bold border border-white hover:border-teal-500 hover:text-white hover:bg-teal-500 px-6 py-2 rounded-full transition duration-300'>
+                <button onClick={scrollToShop} className='uppercase bg-white text-teal-500 font-bold border border-white hover:border-teal-500 hover:text-white hover:bg-teal-500 px-6 py-2 rounded-full transition duration-300'>
                   Shop Now
                 </button>
               </div>
