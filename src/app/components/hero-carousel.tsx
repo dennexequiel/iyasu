@@ -177,7 +177,7 @@ export default function HeroCarousel() {
             pain relief.
           </p>
           <div className='space-y-4'>
-            <button className='uppercase w-full bg-teal-500 text-white font-bold border border-teal-500 hover:bg-white hover:text-teal-500  px-6 py-2 rounded-full transition duration-300'>
+            <button onClick={scrollToShop} className='uppercase w-full bg-teal-500 text-white font-bold border border-teal-500 hover:bg-white hover:text-teal-500  px-6 py-2 rounded-full transition duration-300'>
               Shop Now
             </button>
           </div>
