@@ -1,19 +1,26 @@
 'use client';
 
+import { ArrowLeft } from 'lucide-react';
 import { FormEvent, useState } from 'react';
+import { z } from 'zod';
 import { useScrollTo } from '../hooks/useScrollTo';
 
-// Email validation regex
-const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// Zod schema for email validation
+const emailSchema = z.object({
+  email: z
+    .string()
+    .email('Please enter a valid email address')
+    .max(255, 'Email must be at most 255 characters long'),
+});
 
 // Sub-components
 const SubmitButton: React.FC<{ isLoading: boolean }> = ({ isLoading }) => (
   <button
     type='submit'
     disabled={isLoading}
-    className='uppercase absolute mr-1 right-0 top-1/2 transform -translate-y-1/2 bg-teal-500 text-white font-bold p-3 rounded-full hover:bg-teal-600 transition duration-300 disabled:opacity-50'
+    className='uppercase absolute mr-1 right-0 top-1/2 transform -translate-y-1/2 bg-teal-500 text-white font-bold p-3 rounded-full transition duration-300 disabled:opacity-50 disabled:hover:bg-teal-500 disabled:hover:text-white'
   >
-    Sign Up
+    {isLoading ? 'Signing up' : 'Sign Up'}
   </button>
 );
 
@@ -22,7 +29,8 @@ const NewsletterForm: React.FC<{
   setEmail: (email: string) => void;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
-}> = ({ email, setEmail, handleSubmit, isLoading }) => (
+  error: string | null;
+}> = ({ email, setEmail, handleSubmit, isLoading, error }) => (
   <form onSubmit={handleSubmit} className='flex flex-col items-center'>
     <div className='relative w-full max-w-md mb-4'>
       <input
@@ -31,16 +39,25 @@ const NewsletterForm: React.FC<{
         placeholder='name@email.com'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className='border border-gray-300 outline-none rounded-full p-4 w-full focus:ring-1 focus:ring-teal-500 transition duration-300'
+        className={`border ${
+          error ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-300'
+        } outline-none rounded-full p-4 w-full focus:ring-1 ${
+          error
+            ? 'focus:ring-red-500 focus:border-red-500'
+            : 'focus:ring-teal-500 focus:border-teal-500'
+        } transition duration-300`}
         required
         aria-label='Email address'
       />
       <SubmitButton isLoading={isLoading} />
     </div>
+    {error && <p className='text-red-500 text-sm mt-1'>{error}</p>}
   </form>
 );
 
-const CTASection: React.FC<{ scrollToShop: () => void }> = ({ scrollToShop }) => (
+const CTASection: React.FC<{ scrollToShop: () => void }> = ({
+  scrollToShop,
+}) => (
   <section className='px-4 py-16 text-center bg-teal-500'>
     <h2 className='text-3xl font-bold text-white mb-4'>
       Start Your Path to Simple Healing Today.
@@ -54,33 +71,68 @@ const CTASection: React.FC<{ scrollToShop: () => void }> = ({ scrollToShop }) =>
   </section>
 );
 
+const SuccessPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => (
+  <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300 z-50'>
+    <div className='relative bg-white rounded-3xl max-w-md w-full p-6'>
+      <h2 className='text-2xl font-bold text-center mb-4 text-teal-500'>
+        Success! You&apos;re Officially Subscribed
+      </h2>
+      <p className='text-center mb-6 font-poppins'>
+        You can now have access to exclusive deals and insights
+      </p>
+
+      <a
+        onClick={onClose}
+        className='uppercase font-bold flex items-center justify-center mt-6 text-neutral-500 hover:text-teal-500 transition duration-300 cursor-pointer'
+      >
+        <ArrowLeft className='w-4 h-4 mr-1' />
+        Back
+      </a>
+    </div>
+  </div>
+);
+
 // Main component
 export default function Newsletter() {
   const [email, setEmail] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>('');
-  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const scrollOffset = 350;
   const scrollTo = useScrollTo(scrollOffset);
 
   const scrollToShop = () => scrollTo('shop');
 
   const validateEmail = (email: string): boolean => {
-    return EMAIL_REGEX.test(email);
+    try {
+      emailSchema.parse({ email });
+      setError(null); // Clear error if email is valid
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setError(error.errors[0].message);
+      }
+      return false;
+    }
+  };
+
+  const handleEmailChange = (newEmail: string) => {
+    setEmail(newEmail);
+    if (newEmail) {
+      validateEmail(newEmail);
+    } else {
+      setError(null);
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      setIsSuccess(false);
-      setMessage('Please enter a valid email address.');
       return;
     }
 
     setIsLoading(true);
-    setMessage('Signing up...');
-    setIsSuccess(null);
 
     try {
       const response = await fetch('/api/newsletter', {
@@ -94,26 +146,18 @@ export default function Newsletter() {
       const data = await response.json();
 
       if (response.ok) {
-        setIsSuccess(true);
-        setMessage(data.message || 'Successfully signed up!');
+        setSuccessMessage(data.message || 'Successfully signed up!');
         setEmail('');
+        setError(null);
       } else {
-        setIsSuccess(false);
-        setMessage(data.message || 'An error occurred. Please try again.');
+        setError(data.message || 'An error occurred. Please try again.');
       }
     } catch (error) {
       console.error('An error occurred:', error);
-      setIsSuccess(false);
-      setMessage('An error occurred. Please try again.');
+      setError('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const getMessageColor = () => {
-    if (isSuccess === null) return 'text-gray-500';
-    if (isSuccess) return 'text-teal-500';
-    return 'text-red-500';
   };
 
   return (
@@ -122,22 +166,24 @@ export default function Newsletter() {
         <h2 className='text-3xl font-bold text-teal-500 mb-4'>
           Stay Updated With Iyasu
         </h2>
-        <p className='text-lg text-gray-700 mb-6 font-poppins'>
+        <p className='text-lg text-gray-700 mb-6 font-poppins px-4 md:px-8'>
           Want to keep in touch? Drop your email below to get the latest
           updates, special offers, and wellness tips from Iyasu.
         </p>
-        <NewsletterForm email={email} setEmail={setEmail} handleSubmit={handleSubmit} isLoading={isLoading} />
-        {message && (
-          <p
-            className={`${getMessageColor()} text-center w-full max-w-md mx-auto`}
-            role='status'
-          >
-            {message}
-          </p>
-        )}
+        <NewsletterForm
+          email={email}
+          setEmail={handleEmailChange}
+          handleSubmit={handleSubmit}
+          isLoading={isLoading}
+          error={error}
+        />
       </section>
 
       <CTASection scrollToShop={scrollToShop} />
+
+      {successMessage && (
+        <SuccessPopup onClose={() => setSuccessMessage(null)} />
+      )}
     </>
   );
 }

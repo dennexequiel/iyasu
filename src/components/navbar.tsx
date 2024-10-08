@@ -1,21 +1,21 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
+      setIsScrolled(window.scrollY > 0)
+    }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <nav
@@ -23,9 +23,10 @@ export default function Navbar() {
         isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'
       }`}
     >
-      <div className='container mx-auto px-6 py-4'>
+      <div className='container mx-auto px-4 md:px-8 py-4 flex justify-between items-center'>
         <Link href='/' className='inline-block'>
           <svg
+            width='90'
             viewBox='0 0 145 54'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
@@ -49,6 +50,7 @@ export default function Navbar() {
         </Link>
       </div>
     </nav>
-  );
-};
+  )
+}
 
+export default Navbar
