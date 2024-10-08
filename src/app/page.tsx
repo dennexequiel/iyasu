@@ -1,3 +1,4 @@
+import Contact from "./components/contact";
 import Experience from "./components/experience";
 import HealingMadeSimple from "./components/healing-made-simple";
 import HeroCarousel from "./components/hero-carousel";
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience/>
       <Testimonials/>
       <Newsletter/>
+      <Contact/>
     </main>
   )
 }
