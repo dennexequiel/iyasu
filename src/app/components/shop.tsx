@@ -137,7 +137,7 @@ export default function Shop() {
   return (
     <>
       {/* Wave SVG to "subtract" the top */}
-      <div className='relative py-8 lg:py-16 overflow-hidden w-full bg-teal-500 text-white'>
+      <div className='relative py-8 md:py-12 lg:py-10 overflow-hidden w-full bg-teal-500 text-white'>
         <div className='absolute bottom-0 left-0 w-full pointer-events-none'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -160,7 +160,7 @@ export default function Shop() {
             <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6'>
               Shop Iyasu
             </h2>
-            <p className='text-lg text-white mb-8 lg:mb-20 font-poppins'>
+            <p className='text-lg text-white mb-8 lg:mb-20 font-poppins px-4 md:px-8'>
               Busy lives, simple solutions. Iyasu offers natural, effective
               relief from pain and stress. Our products are inspired by
               traditional healing methods and designed for easy use.
@@ -175,7 +175,7 @@ export default function Shop() {
               {PRODUCTS.map((product, index) => (
                 <div
                   key={index}
-                  className='flex-[0_0_80%] sm:flex-[0_0_40%] lg:flex-[0_0_30%] xl:flex-[0_0_25%] pl-4 first:pl-0 relative transition-transform duration-300 ease-in-out'
+                  className='flex-[0_0_80%] sm:flex-[0_0_40%] lg:flex-[0_0_30%] xl:flex-[0_0_25%] pl-4 last:pr-4 relative transition-transform duration-300 ease-in-out'
                 >
                   <ProductCard
                     product={product}

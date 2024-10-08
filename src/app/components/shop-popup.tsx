@@ -36,11 +36,11 @@ export function ShopPopup({ isOpen, onClose, product }: ShopPopupProps) {
         isOpen ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div className='relative bg-white rounded-3xl max-w-sm w-full p-6'>
-        <h2 className='text-2xl font-bold text-center mb-4'>
+      <div className='relative bg-white rounded-3xl max-w-md w-full p-6'>
+        <h2 className='text-2xl font-bold text-center mb-4 text-teal-500'>
           Shop {product.title}
         </h2>
-        <p className='text-center mb-6'>
+        <p className='text-center mb-6 font-poppins'>
           Continue shopping at your preferred platform
         </p>
 

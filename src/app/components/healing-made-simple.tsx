@@ -20,14 +20,16 @@ function FeatureCard({
   iconAlt,
 }: FeatureCardProps) {
   return (
-    <div className='flex flex-col items-start md:items-center text-left md:text-center py-2 transition-transform duration-300 hover:scale-105'>
-      <div className='flex justify-start sm:justify-center items-center w-full h-16'>
+    <div className='flex flex-col items-center text-center py-2 my-8 transition-transform duration-300 hover:scale-105'>
+      <div className='flex justify-center items-center w-full h-16'>
         <Image src={icon} alt={iconAlt} height={50} width={50} />
       </div>
       <h3 className={`text-xl font-semibold font-poppins ${titleColor} mt-2`}>
         {title}
       </h3>
-      <p className='text-lg text-gray-600 mt-2 font-poppins'>{description}</p>
+      <p className='text-lg text-gray-600 mt-2 font-poppins px-4 md:px-8'>
+        {description}
+      </p>
     </div>
   );
 }
@@ -100,8 +102,8 @@ export default function HealingMadeSimple() {
       </section>
 
       {/* Additional section for feature cards */}
-      <section className='bg-white px-4 py-12'>
-        <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8'>
+      <section className='bg-white pt-12 pb-20 lg:pb-6'>
+        <div className='container mx-auto grid grid-cols-1 lg:grid-cols-3'>
           {features.map((feature, index) => (
             <FeatureCard key={index} {...feature} />
           ))}
