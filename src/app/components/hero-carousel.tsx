@@ -115,8 +115,8 @@ export default function HeroCarousel() {
                   alt={item.alt}
                   fill
                   className='object-cover'
-                  priority
                   placeholder='blur'
+                  loading='lazy'
                 />
               </div>
             ))}
@@ -161,8 +161,8 @@ export default function HeroCarousel() {
                     alt={item.alt}
                     fill
                     className='object-cover w-full h-auto'
-                    priority
                     placeholder='blur'
+                    loading='lazy'
                   />
                 </div>
               ))}
