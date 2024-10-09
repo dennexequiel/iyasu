@@ -168,7 +168,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className={`${getInputClassName('email')} rounded-full`}
+              className={`${getInputClassName('name')} rounded-full`}
             />
             {errors.name &&
               errors.name.map((error, index) => (
