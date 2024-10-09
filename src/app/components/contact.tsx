@@ -125,7 +125,7 @@ export default function Contact() {
       errors[fieldName] && errors[fieldName].length > 0
         ? 'border-red-500 ring-1 ring-red-500'
         : 'border-gray-300'
-    } outline-none rounded-full w-full focus:ring-1 ${
+    } outline-none w-full focus:ring-1 ${
       errors[fieldName] && errors[fieldName].length > 0
         ? 'focus:ring-red-500 focus:border-red-500'
         : 'focus:ring-teal-500 focus:border-teal-500'
@@ -168,7 +168,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className={getInputClassName('name')}
+              className={`${getInputClassName('email')} rounded-full`}
             />
             {errors.name &&
               errors.name.map((error, index) => (
@@ -188,7 +188,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               required
-              className={getInputClassName('email')}
+              className={`${getInputClassName('email')} rounded-full`}
             />
             {errors.email &&
               errors.email.map((error, index) => (

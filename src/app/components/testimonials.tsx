@@ -43,7 +43,7 @@ export default function Testimonials() {
   );
 
   return (
-    <section className='relative py-16 overflow-hidden w-full'>
+    <section className='relative pb-16 overflow-hidden w-full'>
       <div className='w-full relative pt-14 pb-0 lg:pb-14 z-10 bg-teal-500 mb-10'>
         {/* Text Section */}
         <div className='flex flex-col items-center text-center max-w-3xl mx-auto px-6 sm:px-8 lg:px-16'>
