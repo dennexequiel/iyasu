@@ -20,12 +20,13 @@ const carouselItems = [
 ];
 
 type DotButtonPropType = {
+  index: number;
   selected: boolean;
   onClick: () => void;
 };
 
 const DotButton: React.FC<DotButtonPropType> = (props) => {
-  const { selected, onClick } = props;
+  const { selected, onClick, index } = props;
 
   return (
     <button
@@ -34,7 +35,10 @@ const DotButton: React.FC<DotButtonPropType> = (props) => {
       }`}
       type='button'
       onClick={onClick}
-    />
+      aria-label={`Go to slide ${index + 1}`}
+    >
+      <span className="sr-only">Slide {index + 1}</span>
+    </button>
   );
 };
 
@@ -90,6 +94,7 @@ export default function HeroCarousel() {
       {carousel.scrollSnaps.map((_, index) => (
         <DotButton
           key={index}
+          index={index}
           selected={index === carousel.selectedIndex}
           onClick={() => carousel.scrollTo(index)}
         />
