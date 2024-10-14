@@ -7,3 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #282828;
 }
+
+* {
+  cursor: none !important;
+}

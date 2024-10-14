@@ -1,3 +1,4 @@
+import CustomCursor from '@/components/custom-cursor'
 import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 import type { Metadata } from 'next'
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <CustomCursor />
       </body>
     </html>
   )
