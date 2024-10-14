@@ -2,6 +2,8 @@
 
 import hero1 from '@/app/images/hero/1.jpg';
 import hero2 from '@/app/images/hero/2.jpg';
+import uLogoWhite from '@/app/images/u-logo-white.png';
+import uLogo from '@/app/images/u-logo.png';
 import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -37,7 +39,7 @@ const DotButton: React.FC<DotButtonPropType> = (props) => {
       onClick={onClick}
       aria-label={`Go to slide ${index + 1}`}
     >
-      <span className="sr-only">Slide {index + 1}</span>
+      <span className='sr-only'>Slide {index + 1}</span>
     </button>
   );
 };
@@ -84,7 +86,7 @@ const useCarousel = () => {
 export default function HeroCarousel() {
   const desktopCarousel = useCarousel();
   const mobileCarousel = useCarousel();
-  const scrollOffset = 350;
+  const scrollOffset = 100;
   const scrollTo = useScrollTo(scrollOffset);
 
   const scrollToShop = () => scrollTo('shop');
@@ -128,13 +130,23 @@ export default function HeroCarousel() {
               <h1 className='text-4xl md:text-5xl font-bold text-white mb-4'>
                 Heal Simply. Live Fully.
               </h1>
-              <p className='text-lg md:text-xl text-white mb-8 font-poppins'>
-                Our products harness the healing power of nature, combining
-                ancient wisdom with contemporary science to provide effective
-                and accessible pain relief.
+              <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-8 font-poppins whitespace-normal'>
+                Made to help
+                <span className='inline-flex items-baseline mx-2'>
+                  <Image
+                    src={uLogoWhite}
+                    alt='Iyasu U Logo'
+                    width={18}
+                    height={18}
+                  />
+                </span>
+                heal and stay productive every day.
               </p>
               <div className='space-x-4'>
-                <button onClick={scrollToShop} className='uppercase bg-white text-teal-500 font-bold border border-white hover:border-teal-500 hover:text-white hover:bg-teal-500 px-6 py-2 rounded-full transition duration-300'>
+                <button
+                  onClick={scrollToShop}
+                  className='uppercase bg-white text-teal-500 font-bold border border-white hover:border-teal-500 hover:text-white hover:bg-teal-500 px-6 py-2 rounded-full transition duration-300'
+                >
                   Shop Now
                 </button>
               </div>
@@ -176,13 +188,18 @@ export default function HeroCarousel() {
           <h1 className='text-3xl font-bold text-teal-500 mb-4'>
             Heal Simply. Live Fully.
           </h1>
-          <p className='text-lg text-gray-600 mb-6 font-poppins'>
-            Our products harness the healing power of nature, combining ancient
-            wisdom with contemporary science to provide effective and accessible
-            pain relief.
+          <p className='text-base sm:text-lg md:text-xl lg:text-2xl mb-8 font-poppins whitespace-normal'>
+            Made to help
+            <span className='inline-flex items-baseline mx-2'>
+              <Image src={uLogo} alt='Iyasu U Logo' width={18} height={18} />
+            </span>
+            heal and stay productive every day.
           </p>
           <div className='space-y-4'>
-            <button onClick={scrollToShop} className='uppercase w-full bg-teal-500 text-white font-bold border border-teal-500 hover:bg-white hover:text-teal-500  px-6 py-2 rounded-full transition duration-300'>
+            <button
+              onClick={scrollToShop}
+              className='uppercase w-full bg-teal-500 text-white font-bold border border-teal-500 hover:bg-white hover:text-teal-500  px-6 py-2 rounded-full transition duration-300'
+            >
               Shop Now
             </button>
           </div>

@@ -16,7 +16,6 @@ function ProductCard({
   return (
     <div
       className='bg-white rounded-[58px] overflow-hidden p-6 flex flex-col h-full z-10'
-      id='shop'
     >
       <div className='rounded-[46px] aspect-square relative overflow-hidden mb-4'>
         <Image
@@ -26,16 +25,13 @@ function ProductCard({
           placeholder='blur'
         />
       </div>
-      <h3 className='text-xl font-bold my-4 font-poppins'>{product.title}</h3>
+      <h3 className='text-xl font-medium my-4 font-poppins'>{product.title}</h3>
       <p className='text-gray-600 text-sm mb-4 flex-grow font-poppins'>
         {product.description}
       </p>
       <div className='flex items-center justify-start mb-4'>
-        <span className='text-gray-400 line-through font-poppins'>
-          PHP {product.originalPrice.toFixed(2)}
-        </span>
-        <span className='text-xl font-bold ml-2 font-poppins'>
-          PHP {product.discountedPrice.toFixed(2)}
+        <span className='text-xl font-bold font-poppins'>
+          PHP {product.price.toFixed(2)}
         </span>
       </div>
       <button

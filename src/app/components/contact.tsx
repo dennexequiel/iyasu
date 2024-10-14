@@ -7,8 +7,14 @@ import { z } from 'zod';
 
 // Define the form schema using Zod
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters long').max(255, 'Name must be at most 255 characters long'),
-  email: z.string().email('Please enter a valid email address').max(255, 'Email must be at most 255 characters long'),
+  name: z
+    .string()
+    .min(2, 'Name must be at least 2 characters long')
+    .max(255, 'Name must be at most 255 characters long'),
+  email: z
+    .string()
+    .email('Please enter a valid email address')
+    .max(255, 'Email must be at most 255 characters long'),
   message: z.string().min(10, 'Message must be at least 10 characters long'),
 });
 
@@ -133,14 +139,19 @@ export default function Contact() {
   };
 
   return (
-    <section className='bg-white max-w-screen-2xl md:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col md:flex-row py-16 px-4 md:px-8'>
+    <section
+      className='bg-white max-w-screen-2xl md:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col md:flex-row py-16 px-4 md:px-8'
+      id='contact'
+    >
       {/* Form Section */}
       <div className='w-full md:w-1/2 md:pr-8 mb-8 md:mb-0'>
-        <h2 className='text-3xl font-bold text-teal-500 mb-4'>Get in Touch</h2>
-        <p className='text-lg mb-8 font-poppins w-full xl:w-10/12'>
+        <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-8 sm:mb-10 lg:mb-12 hover:scale-105 transition-transform duration-300'>
+          We’re a message away
+        </h2>
+        {/* <p className='text-base mb-8 font-poppins w-full xl:w-10/12'>
           We would love to hear from you. Please fill out the form below and we
           will get back to you as soon as possible.
-        </p>
+        </p> */}
         <form
           onSubmit={handleSubmit}
           className='space-y-4 md:space-y-6 w-full xl:w-10/12'

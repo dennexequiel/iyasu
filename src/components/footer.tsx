@@ -27,7 +27,7 @@ export default function Footer() {
                   viewBox='0 0 145 54'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
-                  className='fill-teal-500'
+                  className='fill-teal-500 w-auto h-10'
                   aria-label='Iyasu Logo'
                 >
                   <g clipPath='url(#a)'>

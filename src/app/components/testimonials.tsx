@@ -3,11 +3,11 @@ import TestimonialCarousel from './testimonial-carousel'
 
 export default function Testimonials() {
   return (
-    <section className='relative pb-16 overflow-hidden w-full'>
+    <section className='relative pb-16 overflow-hidden w-full' id='testimonials'>
       <div className='w-full relative pt-14 pb-0 lg:pb-14 z-10 bg-teal-500 mb-10'>
         {/* Text Section */}
         <div className='flex flex-col items-center text-center max-w-3xl mx-auto px-6 sm:px-8 lg:px-16'>
-          <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 sm:mb-10 lg:mb-12'>
+          <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white mb-8 sm:mb-10 lg:mb-12 hover:scale-105 transition-transform duration-300'>
             Follow Iyasu. Let&apos;s Feel Better Together!
           </h2>
         </div>

@@ -21,18 +21,18 @@ export default function Shop() {
         </div>
       </div>
 
-      <section className='bg-teal-500 pt-12 pb-20'>
+      <section className='bg-teal-500 pt-12 pb-20' id='shop'>
         {/* Title and description */}
         <div className='relative z-10 px-4'>
           <div className='flex flex-col items-center text-center max-w-3xl mx-auto'>
-            <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6'>
+            <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white mb-8 sm:mb-10 lg:mb-20 hover:scale-105 transition-transform duration-300'>
               Shop Iyasu
             </h2>
-            <p className='text-lg text-white mb-8 lg:mb-20 font-poppins px-4 md:px-8'>
+            {/* <p className='text-base text-white mb-8 lg:mb-20 font-poppins px-4 md:px-8'>
               Busy lives, simple solutions. Iyasu offers natural, effective
               relief from pain and stress. Our products are inspired by
               traditional healing methods and designed for easy use.
-            </p>
+            </p> */}
           </div>
         </div>
 

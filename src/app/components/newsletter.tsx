@@ -59,7 +59,7 @@ const CTASection: React.FC<{ scrollToShop: () => void }> = ({
   scrollToShop,
 }) => (
   <section className='px-4 py-16 text-center bg-teal-500'>
-    <h2 className='text-3xl font-bold text-white mb-4'>
+    <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white mb-8 sm:mb-10 lg:mb-12 hover:scale-105 transition-transform duration-300'>
       Start Your Path to Simple Healing Today.
     </h2>
     <button
@@ -162,9 +162,9 @@ export default function Newsletter() {
 
   return (
     <>
-      <section className='bg-teal-50 px-4 rounded-lg text-center py-16'>
-        <h2 className='text-3xl font-bold text-teal-500 mb-4'>
-          Stay Updated With Iyasu
+      <section className='bg-teal-50 px-4 rounded-lg text-center py-16' id='newsletter'>
+        <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-4 hover:scale-105 transition-transform duration-300'>
+          Be the First to Get Updates
         </h2>
         <p className='text-lg text-gray-700 mb-6 font-poppins px-4 md:px-8'>
           Want to keep in touch? Drop your email below to get the latest

@@ -1,26 +1,40 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useScrollTo } from '@/app/hooks/useScrollTo';
+import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollTo = useScrollTo();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
+      setIsScrolled(window.scrollY > 0);
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleNavClick = (section: string, offset: number = 0) => {
+    scrollTo(section, offset);
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 ${
-        isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'
+        isScrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'
       }`}
     >
       <div className='container mx-auto px-4 md:px-8 py-4 flex justify-between items-center'>
@@ -30,8 +44,8 @@ const Navbar = () => {
             viewBox='0 0 145 54'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
-            className={`w-auto h-8 transition-colors duration-300 ${
-              isScrolled ? 'fill-teal-500' : 'fill-white'
+            className={`w-auto h-10 transition-colors duration-300 ${
+              isScrolled || isMenuOpen ? 'fill-teal-500' : 'fill-white'
             }`}
             aria-label='Iyasu Logo'
           >
@@ -48,9 +62,58 @@ const Navbar = () => {
             </defs>
           </svg>
         </Link>
+
+        {/* Hamburger menu for mobile */}
+        <button
+          className={`lg:hidden focus:outline-none ${
+            isScrolled || isMenuOpen ? 'text-teal-500' : 'text-white'
+          }`}
+          onClick={toggleMenu}
+          aria-label='Toggle menu'
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Navigation links */}
+        <div
+          className={`lg:flex ${
+            isMenuOpen ? 'block' : 'hidden'
+          } absolute lg:static top-full left-0 right-0 bg-white lg:bg-transparent shadow-md lg:shadow-none`}
+        >
+          <ul className='flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-6 p-4 lg:p-0'>
+            <li>
+              <button
+                onClick={() => handleNavClick('shop', 100)}
+                className={`font-medium text-xl font-poppins hover:animate-pulse ${
+                  isScrolled || isMenuOpen ? 'text-teal-500' : 'text-white'
+                }`}
+              >
+                Products
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('testimonials')}
+                 className={`font-medium text-xl font-poppins hover:animate-pulse ${
+                  isScrolled || isMenuOpen ? 'text-teal-500' : 'text-white'
+                }`}
+              >
+                Reviews
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => handleNavClick('contact')}
+                 className={`font-medium text-xl font-poppins hover:animate-pulse ${
+                  isScrolled || isMenuOpen ? 'text-teal-500' : 'text-white'
+                }`}
+              >
+                Contact Us
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-  )
+  );
 }
-
-export default Navbar

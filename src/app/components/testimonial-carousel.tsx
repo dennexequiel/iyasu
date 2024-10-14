@@ -71,7 +71,7 @@ export default function TestimonialCarousel({ testimonials }: Props) {
               {/* Card */}
               <div className='bg-white p-8 h-auto min-w-[300px] max-w-full sm:max-w-[90%] lg:max-w-[500px] rounded-[32px] shadow-md mx-auto'>
                 <StarRating rating={testimonial.rating} />
-                <blockquote className='text-lg mb-6 min-h-32 lg:min-h-24 xl:min-h-28 font-poppins'>
+                <blockquote className='text-lg mb-6 min-h-56 md:min-h-72 lg:min-h-80 xl:min-h-48 font-poppins'>
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 <div className='flex flex-col items-center'>

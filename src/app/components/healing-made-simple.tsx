@@ -24,10 +24,10 @@ function FeatureCard({
       <div className='flex justify-center items-center w-full h-16'>
         <Image src={icon} alt={iconAlt} height={50} width={50} />
       </div>
-      <h3 className={`text-xl font-semibold font-poppins ${titleColor} mt-2`}>
+      <h3 className={`text-xl font-medium font-poppins ${titleColor} mt-2`}>
         {title}
       </h3>
-      <p className='text-lg text-gray-600 mt-2 font-poppins px-4 md:px-8'>
+      <p className='text-base text-gray-600 mt-2 font-poppins px-4 md:px-8'>
         {description}
       </p>
     </div>
@@ -40,7 +40,7 @@ export default function HealingMadeSimple() {
       title: 'Natural & Safe',
       titleColor: 'text-teal-500',
       description:
-        'Each ingredient is carefully sourced and undergoes strict quality control to create products that truly heal and make your pain go away.',
+        'Each ingredient is carefully sourced to create solutions that provide the right relief.',
       icon: naturalSafe,
       iconAlt: 'Natural & Safe',
     },
@@ -48,7 +48,7 @@ export default function HealingMadeSimple() {
       title: 'Easy Application',
       titleColor: 'text-orange-500',
       description:
-        'Designed for your ease, with simple, fuss-free application.',
+        'Designed for your convenience with simple, comfortable application.',
       icon: easyApplication,
       iconAlt: 'Easy Application',
     },
@@ -56,7 +56,7 @@ export default function HealingMadeSimple() {
       title: 'Fast Healing',
       titleColor: 'text-red-500',
       description:
-        'Crafted with natural Asian medicinal ingredients, meticulously chosen to give you fast relief.',
+        'Enjoy fast and effective relief that last for hours.',
       icon: fastHealing,
       iconAlt: 'Fast Healing',
     },
@@ -65,7 +65,7 @@ export default function HealingMadeSimple() {
   return (
     <>
       {/* Main section with logo and introductory text */}
-      <section className='relative px-4 py-16 overflow-hidden w-full'>
+      <section className='relative px-4 py-16 overflow-hidden w-full' id='healing-made-simple'>
         <div className='w-full relative z-10'>
           <div className='flex flex-col sm:items-start md:items-center text-left md:text-center max-w-3xl mx-auto'>
             <Image
@@ -74,10 +74,10 @@ export default function HealingMadeSimple() {
               width={50}
               className='mb-6 h-auto'
             />
-            <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-teal-500 mb-6'>
+            <h1 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-6 hover:scale-105 transition-transform duration-300'>
               Healing Made Simple
-            </h2>
-            <p className='text-lg mb-8 lg:mb-20 font-poppins px-4 md:px-8'>
+            </h1>
+            <p className='text-base mb-8 lg:mb-20 font-poppins'>
               Busy lives, simple solutions. Iyasu offers natural, effective
               relief from pain and stress. Our products are inspired by
               traditional healing methods and designed for easy use.
@@ -102,7 +102,7 @@ export default function HealingMadeSimple() {
       </section>
 
       {/* Additional section for feature cards */}
-      <section className='bg-white pt-12 pb-20 lg:pb-6'>
+      <section className='bg-white pt-12 pb-20 lg:pb-12'>
         <div className='container mx-auto grid grid-cols-1 lg:grid-cols-3'>
           {features.map((feature, index) => (
             <FeatureCard key={index} {...feature} />

@@ -25,10 +25,10 @@ function ProductCard({
         />
       </div>
       <div className='flex flex-col flex-grow'>
-        <h3 className='text-2xl sm:text-3xl font-bold text-teal-500 mb-4'>
+        <h3 className='text-xl font-medium my-4 font-poppins text-teal-500 mb-4'>
           {product.title}
         </h3>
-        <p className='text-sm sm:text-base text-gray-600 mb-6 flex-grow font-poppins'>
+        <p className='text-sm text-gray-600 mb-6 flex-grow font-poppins'>
           {product.experienceDescription}
         </p>
         <button

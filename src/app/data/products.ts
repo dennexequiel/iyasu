@@ -14,8 +14,7 @@ export interface Product {
   imageSrc: StaticImageData;
   experienceImageSrc: StaticImageData;
   experienceDescription: string;
-  originalPrice: number;
-  discountedPrice: number;
+  price: number;
   shopeeLink: string;
   lazadaLink: string;
   tiktokLink: string;
@@ -30,11 +29,10 @@ export const PRODUCTS: Product[] = [
     experienceImageSrc: expMultiUse,
     experienceDescription:
       'Feel the magic of menthol in every patch. Made from natural ingredients, these patches offer relief for sore muscles, neck aches, backaches, and other body pains. Mild-scented and easy to use, they help you stay active and comfortable wherever you are.',
-    originalPrice: 200,
-    discountedPrice: 100,
-    shopeeLink: 'https://shopee.com/iyasu-multi-use-pain-relief',
-    lazadaLink: 'https://www.lazada.com/iyasu-multi-use-pain-relief',
-    tiktokLink: 'https://www.tiktok.com/@iyasu/multi-use-pain-relief',
+    price: 149,
+    shopeeLink: 'https://shopee.ph/shop/1346432670',
+    lazadaLink: 'https://www.lazada.com.ph/shop/iyasu-life',
+    tiktokLink: 'https://www.tiktok.com/@iyasu.life',
   },
   {
     title: 'Herbal Warm Patch',
@@ -44,11 +42,10 @@ export const PRODUCTS: Product[] = [
     experienceImageSrc: expHerbalPatch,
     experienceDescription:
       'Sore tummy or cramps? Body aches? Try the healing power of moxibustion, an ancient Chinese heat therapy using mugwort. This helps stimulate circulation and relieve pain, so you can feel better fast, even on the go.',
-    originalPrice: 200,
-    discountedPrice: 100,
-    shopeeLink: 'https://shopee.com/iyasu-herbal-warm-patch',
-    lazadaLink: 'https://www.lazada.com/iyasu-herbal-warm-patch',
-    tiktokLink: 'https://www.tiktok.com/@iyasu/herbal-warm-patch',
+    price: 249,
+    shopeeLink: 'https://shopee.ph/shop/1346432670',
+    lazadaLink: 'https://www.lazada.com.ph/shop/iyasu-life',
+    tiktokLink: 'https://www.tiktok.com/@iyasu.life',
   },
   {
     title: 'Warm+ Pain Relief',
@@ -58,11 +55,10 @@ export const PRODUCTS: Product[] = [
     experienceImageSrc: expMainRelief,
     experienceDescription:
       'Don’t let aches stop you from doing what you love. Our Warm+ Pain Relief Patch provides extra strength for faster and lasting pain-relief from muscle aches, arthritis, and everyday discomfort.',
-    originalPrice: 200,
-    discountedPrice: 100,
-    shopeeLink: 'https://shopee.com/iyasu-warm-plus-pain-relief',
-    lazadaLink: 'https://www.lazada.com/iyasu-warm-plus-pain-relief',
-    tiktokLink: 'https://www.tiktok.com/@iyasu/warm-plus-pain-relief',
+    price: 169,
+    shopeeLink: 'https://shopee.ph/shop/1346432670',
+    lazadaLink: 'https://www.lazada.com.ph/shop/iyasu-life',
+    tiktokLink: 'https://www.tiktok.com/@iyasu.life',
   },
   {
     title: 'Stress Away Foot Patch',
@@ -72,10 +68,9 @@ export const PRODUCTS: Product[] = [
     experienceImageSrc: expFootPatch,
     experienceDescription:
       'Kick stress to the curb with soothing foot patches packed with natural ingredients like green tea. Boost your vitality, relieve fatigue, enhance sleep quality, and prevent foot odor. Sweet dreams and refreshed mornings are just a patch away!',
-    originalPrice: 200,
-    discountedPrice: 100,
-    shopeeLink: 'https://shopee.com/iyasu-stress-away-foot-patch',
-    lazadaLink: 'https://www.lazada.com/iyasu-stress-away-foot-patch',
-    tiktokLink: 'https://www.tiktok.com/@iyasu/stress-away-foot-patch',
+    price: 100,
+    shopeeLink: 'https://shopee.ph/shop/1346432670',
+    lazadaLink: 'https://www.lazada.com.ph/shop/iyasu-life',
+    tiktokLink: 'https://www.tiktok.com/@iyasu.life',
   },
 ];
