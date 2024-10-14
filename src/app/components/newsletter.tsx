@@ -18,7 +18,7 @@ const SubmitButton: React.FC<{ isLoading: boolean }> = ({ isLoading }) => (
   <button
     type='submit'
     disabled={isLoading}
-    className='uppercase absolute mr-1 right-0 top-1/2 transform -translate-y-1/2 bg-teal-500 text-white font-bold p-3 rounded-full transition duration-300 disabled:opacity-50 disabled:hover:bg-teal-500 disabled:hover:text-white'
+    className='uppercase absolute mr-1 right-0 top-1/2 transform -translate-y-1/2 bg-teal-500 text-white font-bold p-3 border border-teal-500 rounded-full transition duration-300 hover:bg-white hover:text-teal-500 disabled:opacity-50 disabled:hover:bg-teal-500 disabled:hover:text-white'
   >
     {isLoading ? 'Signing up' : 'Sign Up'}
   </button>
@@ -162,7 +162,10 @@ export default function Newsletter() {
 
   return (
     <>
-      <section className='bg-teal-50 px-4 rounded-lg text-center py-16' id='newsletter'>
+      <section
+        className='bg-teal-50 px-4 rounded-lg text-center py-16'
+        id='newsletter'
+      >
         <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-4 hover:scale-105 transition-transform duration-300'>
           Be the First to Get Updates
         </h2>
