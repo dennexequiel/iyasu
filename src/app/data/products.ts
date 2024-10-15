@@ -68,7 +68,7 @@ export const PRODUCTS: Product[] = [
     experienceImageSrc: expFootPatch,
     experienceDescription:
       'Kick stress to the curb with soothing foot patches packed with natural ingredients like green tea. Boost your vitality, relieve fatigue, enhance sleep quality, and prevent foot odor. Sweet dreams and refreshed mornings are just a patch away!',
-    price: 100,
+    price: 149,
     shopeeLink: 'https://shopee.ph/shop/1346432670',
     lazadaLink: 'https://www.lazada.com.ph/shop/iyasu-life',
     tiktokLink: 'https://www.tiktok.com/@iyasu.life',
