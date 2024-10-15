@@ -1,6 +1,7 @@
 import CustomCursor from '@/components/custom-cursor'
 import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import localFont from 'next/font/local'
@@ -50,6 +51,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <CustomCursor />
+        <SpeedInsights />
       </body>
     </html>
   )
