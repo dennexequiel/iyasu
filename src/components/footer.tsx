@@ -1,8 +1,8 @@
 'use client';
 
-import { Facebook, Instagram } from 'lucide-react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { LuFacebook, LuInstagram } from "react-icons/lu";
+import { PiTiktokLogo } from "react-icons/pi";
 
 export default function Footer() {
   const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_URL;
@@ -16,18 +16,18 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className='bg-white font-poppins pb-8'>
+    <footer className='bg-white font-poppins py-8'>
       <div className='container mx-auto px-4 md:px-8'>
         <div className='flex flex-col md:flex-row justify-between items-start'>
           <div className='flex flex-col md:flex-row w-full md:w-auto space-y-6 md:space-y-0 md:space-x-8'>
-            <div className='md:w-auto'>
+            {/* <div className='md:w-auto'>
               <Link href='/'>
                 <svg
                   width='90'
                   viewBox='0 0 145 54'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
-                  className='fill-teal-500 w-auto h-10'
+                  className='fill-teal-500 w-auto h-12'
                   aria-label='Iyasu Logo'
                 >
                   <g clipPath='url(#a)'>
@@ -43,7 +43,7 @@ export default function Footer() {
                   </defs>
                 </svg>
               </Link>
-            </div>
+            </div> */}
             <div className='text-left'>
               <p className='mb-2'>Got Ideas? Email us at</p>
               <a href={`mailto:${contactEmail}`} className='hover:underline'>
@@ -65,38 +65,27 @@ export default function Footer() {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='Facebook'
+                title='Follow us on Facebook'
               >
-                <Facebook className='w-6 h-6 text-teal-500' />
+                <LuFacebook className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300'/>
               </a>
               <a
                 href={instagramUrl}
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='Instagram'
+                title='Follow us on Instagram'
               >
-                <Instagram className='w-6 h-6 text-teal-500' />
+                <LuInstagram className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300'/>
               </a>
               <a
                 href={tiktokUrl}
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label='TikTok'
+                title='Follow us on TikTok'
               >
-                <svg
-                  viewBox='0 0 64.00 64.00'
-                  xmlns='http://www.w3.org/2000/svg'
-                  strokeWidth='4.288'
-                  stroke='currentColor'
-                  className='w-6 h-6 text-teal-500'
-                  fill='none'
-                >
-                  <g id='SVGRepo_iconCarrier'>
-                    <path
-                      d='M52.46,26.64c-1.15.25-4.74.65-9.7-2.41a.5.5,0,0,0-.77.42s0,10,0,13.33c0,2.68.15,20.4-17.16,18.42,0,0-13.68-1-13.68-16.33,0,0,.19-13.8,16.42-15a.51.51,0,0,1,.55.5V32.6a.48.48,0,0,1-.42.49c-1.9.27-9.54,1.8-8.69,8.77a7.19,7.19,0,0,0,7.37,6.3s7,.78,7.32-9V7.94a.51.51,0,0,1,.5-.5h6.88a.5.5,0,0,1,.49.41c.36,2,2.42,9.82,10.8,10.31a.5.5,0,0,1,.48.49v7.51A.48.48,0,0,1,52.46,26.64Z'
-                      strokeLinecap='round'
-                    ></path>
-                  </g>
-                </svg>
+                <PiTiktokLogo className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300'/>
               </a>
             </div>
             <p className='text-left md:text-right'>
