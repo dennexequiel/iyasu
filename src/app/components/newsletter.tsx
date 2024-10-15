@@ -1,7 +1,7 @@
 'use client';
 
-import { ArrowLeft } from 'lucide-react';
 import { FormEvent, useState } from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
 import { z } from 'zod';
 import { useScrollTo } from '../hooks/useScrollTo';
 
@@ -59,7 +59,7 @@ const CTASection: React.FC<{ scrollToShop: () => void }> = ({
   scrollToShop,
 }) => (
   <section className='px-4 py-16 text-center bg-teal-500'>
-    <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white mb-8 sm:mb-10 lg:mb-12 hover:scale-105 transition-transform duration-300'>
+    <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white mb-8 sm:mb-10 lg:mb-12'>
       Start Your Path to Simple Healing Today.
     </h2>
     <button
@@ -78,14 +78,14 @@ const SuccessPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => (
         Success! You&apos;re Officially Subscribed
       </h2>
       <p className='text-center mb-6 font-poppins'>
-        You can now have access to exclusive deals and insights
+        Stay in the loop! Get the latest updates straight to your inbox.
       </p>
 
       <a
         onClick={onClose}
         className='uppercase font-bold flex items-center justify-center mt-6 text-neutral-500 hover:text-teal-500 transition duration-300 cursor-pointer'
       >
-        <ArrowLeft className='w-4 h-4 mr-1' />
+        <FaArrowLeft    className='w-4 h-4 mr-1' />
         Back
       </a>
     </div>
@@ -98,7 +98,7 @@ export default function Newsletter() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const scrollOffset = 350;
+  const scrollOffset = 100;
   const scrollTo = useScrollTo(scrollOffset);
 
   const scrollToShop = () => scrollTo('shop');
@@ -166,10 +166,10 @@ export default function Newsletter() {
         className='bg-teal-50 px-4 rounded-lg text-center py-16'
         id='newsletter'
       >
-        <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-4 hover:scale-105 transition-transform duration-300'>
+        <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-4'>
           Be the First to Get Updates
         </h2>
-        <p className='text-lg text-gray-700 mb-6 font-poppins px-4 md:px-8'>
+        <p className='text-lg text-gray-700 mb-6 font-poppins'>
           Want to keep in touch? Drop your email below to get the latest
           updates, special offers, and wellness tips from Iyasu.
         </p>
