@@ -2,11 +2,12 @@
 
 import hero1 from '@/app/images/hero/1.jpg';
 import hero2 from '@/app/images/hero/2.jpg';
+import hero3 from '@/app/images/hero/3.jpg';
 import uLogoWhite from '@/app/images/u-logo-white.png';
-import uLogo from '@/app/images/u-logo.png';
 import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useScrollTo } from '../hooks/useScrollTo';
@@ -19,6 +20,7 @@ const AUTOPLAY_OPTIONS = {
 const carouselItems = [
   { id: 1, image: hero1, alt: 'Iyasu Background 1' },
   { id: 2, image: hero2, alt: 'Iyasu Background 2' },
+  { id: 3, image: hero3, alt: 'Iyasu Background 3' },
 ];
 
 type DotButtonPropType = {
@@ -104,10 +106,22 @@ export default function HeroCarousel() {
     </div>
   );
 
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section className='relative'>
       {/* Desktop Layout */}
-      <div className='hidden md:block relative h-[825px]'>
+      <div className='hidden md:block relative h-svh'>
         <div className='overflow-hidden h-full' ref={desktopCarousel.emblaRef}>
           <div className='h-full flex'>
             {carouselItems.map((item) => (
@@ -116,7 +130,7 @@ export default function HeroCarousel() {
                   src={item.image}
                   alt={item.alt}
                   fill
-                  className='object-cover'
+                  className='object-cover brightness-75'
                   placeholder='blur'
                   loading='lazy'
                 />
@@ -127,10 +141,21 @@ export default function HeroCarousel() {
         <div className='absolute inset-0 flex items-center'>
           <div className='container mx-auto px-4 md:px-0'>
             <div className='md:w-1/2 p-6 rounded-lg'>
-              <h1 className='text-4xl md:text-5xl font-bold text-white mb-4'>
+              <motion.h1
+                className='text-4xl md:text-5xl font-bold text-white mb-4'
+                variants={textVariants}
+                initial="hidden"
+                whileInView="visible"
+              >
                 Heal Simply. Live Fully.
-              </h1>
-              <p className='text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-8 font-poppins whitespace-normal'>
+              </motion.h1>
+              <motion.p
+                className='text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-8 font-poppins whitespace-normal'
+                variants={textVariants}
+                initial="hidden"
+                whileInView="visible"
+                transition={{ delay: 0.2 }}
+              >
                 Made to help
                 <span className='inline-flex items-baseline mx-2'>
                   <Image
@@ -141,15 +166,21 @@ export default function HeroCarousel() {
                   />
                 </span>
                 heal and stay productive every day.
-              </p>
-              <div className='space-x-4'>
+              </motion.p>
+              <motion.div
+                className='space-x-4'
+                variants={textVariants}
+                initial="hidden"
+                whileInView="visible"
+                transition={{ delay: 0.4 }}
+              >
                 <button
                   onClick={scrollToShop}
                   className='uppercase bg-white text-teal-500 font-bold border border-white hover:border-teal-500 hover:text-white hover:bg-teal-500 px-6 py-2 rounded-full transition duration-300'
                 >
                   Shop Now
                 </button>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -162,7 +193,7 @@ export default function HeroCarousel() {
       <div className='md:hidden flex flex-col'>
         <div className='relative'>
           <div
-            className='embla overflow-hidden h-64'
+            className='embla overflow-hidden h-80'
             ref={mobileCarousel.emblaRef}
           >
             <div className='h-full flex'>
@@ -172,7 +203,7 @@ export default function HeroCarousel() {
                     src={item.image}
                     alt={item.alt}
                     fill
-                    className='object-cover w-full h-auto'
+                    className='object-cover w-full h-auto brightness-75'
                     placeholder='blur'
                     loading='lazy'
                   />
@@ -185,24 +216,37 @@ export default function HeroCarousel() {
           </div>
         </div>
         <div className='container mx-auto px-4 py-8 bg-white'>
-          <h1 className='text-3xl font-bold text-teal-500 mb-4'>
+          <motion.h1
+            className='text-3xl font-bold text-teal-500 mb-4'
+            variants={textVariants}
+            initial="hidden"
+            whileInView="visible"
+          >
             Heal Simply. Live Fully.
-          </h1>
-          <p className='text-base sm:text-lg md:text-xl lg:text-2xl mb-8 font-poppins whitespace-normal'>
-            Made to help
-            <span className='inline-flex items-baseline mx-2'>
-              <Image src={uLogo} alt='Iyasu U Logo' width={18} height={18} />
-            </span>
-            heal and stay productive every day.
-          </p>
-          <div className='space-y-4'>
+          </motion.h1>
+          <motion.p
+            className='text-base sm:text-lg md:text-xl lg:text-2xl mb-8 font-poppins whitespace-normal'
+            variants={textVariants}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ delay: 0.2 }}
+          >
+            Made to help you heal and stay productive every day.
+          </motion.p>
+          <motion.div
+            className='space-y-4'
+            variants={textVariants}
+            initial="hidden"
+            whileInView="visible"
+            transition={{ delay: 0.4 }}
+          >
             <button
               onClick={scrollToShop}
               className='uppercase w-full bg-teal-500 text-white font-bold border border-teal-500 hover:bg-white hover:text-teal-500  px-6 py-2 rounded-full transition duration-300'
             >
               Shop Now
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

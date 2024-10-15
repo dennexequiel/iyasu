@@ -2,6 +2,7 @@
 
 import { Product } from '@/app/data/products'
 import useEmblaCarousel from 'embla-carousel-react'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import { ShopPopup } from './shop-popup'
@@ -14,8 +15,10 @@ function ProductCard({
   onShopNow: () => void
 }) {
   return (
-    <div
+    <motion.div
       className='bg-white rounded-[58px] overflow-hidden p-6 flex flex-col h-full z-10'
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.03 }}
     >
       <div className='rounded-[46px] aspect-square relative overflow-hidden mb-4'>
         <Image
@@ -40,7 +43,7 @@ function ProductCard({
       >
         Shop Now
       </button>
-    </div>
+    </motion.div>
   )
 }
 
@@ -136,7 +139,7 @@ export default function ShopCarousel({ products }: { products: Product[] }) {
   return (
     <>
       <div className='container mx-auto px-4 cursor-pointer'>
-        <div className='overflow-hidden' ref={emblaRef}>
+        <div className="overflow-hidden xl:overflow-visible" ref={emblaRef}>
           <div className='flex'>
             {products.map((product, index) => (
               <div

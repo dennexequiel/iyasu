@@ -1,7 +1,10 @@
+'use client';
+
 import easyApplication from '@/app/images/healing-made-simple/easy-application.png';
 import fastHealing from '@/app/images/healing-made-simple/fast-healing.png';
 import naturalSafe from '@/app/images/healing-made-simple/natural-and-safe.png';
 import logo from '@/app/images/u-logo.png';
+import { motion } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 
 interface FeatureCardProps {
@@ -20,17 +23,20 @@ function FeatureCard({
   iconAlt,
 }: FeatureCardProps) {
   return (
-    <div className='flex flex-col items-center text-center py-2 my-8 transition-transform duration-300 hover:scale-105'>
-      <div className='flex justify-center items-center w-full h-16'>
-        <Image src={icon} alt={iconAlt} height={50} width={50} />
-      </div>
+    <motion.div
+      className='flex flex-col items-center text-center py-2 my-8'
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <Image src={icon} alt={iconAlt} height={50} width={50} />
+
       <h3 className={`text-xl font-medium font-poppins ${titleColor} mt-2`}>
         {title}
       </h3>
       <p className='text-base text-gray-600 mt-2 font-poppins px-4 md:px-8'>
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -55,8 +61,7 @@ export default function HealingMadeSimple() {
     {
       title: 'Fast Healing',
       titleColor: 'text-red-500',
-      description:
-        'Enjoy fast and effective relief that last for hours.',
+      description: 'Enjoy fast and effective relief that last for hours.',
       icon: fastHealing,
       iconAlt: 'Fast Healing',
     },
@@ -65,16 +70,25 @@ export default function HealingMadeSimple() {
   return (
     <>
       {/* Main section with logo and introductory text */}
-      <section className='relative px-4 py-16 overflow-hidden w-full' id='healing-made-simple'>
+      <section
+        className='relative px-4 py-16 overflow-hidden w-full'
+        id='healing-made-simple'
+      >
         <div className='w-full relative z-10'>
           <div className='flex flex-col sm:items-start md:items-center text-left md:text-center max-w-3xl mx-auto'>
-            <Image
-              src={logo}
-              alt='Iyasu U Logo'
-              width={50}
-              className='mb-6 h-auto'
-            />
-            <h1 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-6 hover:scale-105 transition-transform duration-300'>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 360 }}
+              transition={{ duration: 1 }}
+            >
+              <Image
+                src={logo}
+                alt='Iyasu U Logo'
+                width={50}
+                className='mb-6 h-auto'
+              />
+            </motion.div>
+            <h1 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-6'>
               Healing Made Simple
             </h1>
             <p className='text-base mb-8 lg:mb-20 font-poppins'>

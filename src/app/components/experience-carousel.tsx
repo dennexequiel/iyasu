@@ -1,20 +1,25 @@
-'use client'
+'use client';
 
-import { Product } from '@/app/data/products'
-import useEmblaCarousel from 'embla-carousel-react'
-import Image from 'next/image'
-import { useCallback, useEffect, useState } from 'react'
-import { ShopPopup } from './shop-popup'
+import { Product } from '@/app/data/products';
+import useEmblaCarousel from 'embla-carousel-react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
+import { ShopPopup } from './shop-popup';
 
 function ProductCard({
   product,
   onShopNow,
 }: {
-  product: Product
-  onShopNow: (product: Product) => void
+  product: Product;
+  onShopNow: (product: Product) => void;
 }) {
   return (
-    <div className='bg-white p-6 sm:p-8 h-full rounded-[32px] sm:rounded-[56px] drop-shadow-lg mx-auto flex flex-col w-full md:w-[688px]'>
+    <motion.div
+      className='bg-white p-6 sm:p-8 h-full rounded-[32px] sm:rounded-[56px] shadow-lg mx-auto flex flex-col w-full md:w-[688px]'
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.03 }}
+    >
       <div className='relative w-full h-48 sm:h-64 md:h-80 mb-6'>
         <Image
           src={product.experienceImageSrc}
@@ -38,47 +43,51 @@ function ProductCard({
           Buy Now
         </button>
       </div>
-    </div>
-  )
+    </motion.div>
+  );
 }
 
-export default function ExperienceCarousel({ products }: { products: Product[] }) {
+export default function ExperienceCarousel({
+  products,
+}: {
+  products: Product[];
+}) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     dragFree: true,
     align: 'center',
     containScroll: 'trimSnaps',
     slidesToScroll: 1,
-  })
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const onSelect = useCallback(() => {
-    if (!emblaApi) return
-    setSelectedIndex(emblaApi.selectedScrollSnap())
-  }, [emblaApi])
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
-    if (!emblaApi) return
-    onSelect()
-    emblaApi.on('select', onSelect)
-    emblaApi.on('reInit', onSelect)
-  }, [emblaApi, onSelect])
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
 
   const scrollTo = useCallback(
     (index: number) => emblaApi && emblaApi.scrollTo(index),
     [emblaApi]
-  )
+  );
 
   const handleShopNow = (product: Product) => {
-    setSelectedProduct(product)
-    setIsPopupOpen(true)
-  }
+    setSelectedProduct(product);
+    setIsPopupOpen(true);
+  };
 
   const handleClosePopup = () => {
-    setIsPopupOpen(false)
-  }
+    setIsPopupOpen(false);
+  };
 
   return (
     <>
@@ -122,5 +131,5 @@ export default function ExperienceCarousel({ products }: { products: Product[] }
         />
       )}
     </>
-  )
+  );
 }

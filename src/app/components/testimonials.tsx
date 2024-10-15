@@ -1,19 +1,59 @@
-import { TESTIMONIALS } from '@/app/data/testimonials'
-import TestimonialCarousel from './testimonial-carousel'
+import { TESTIMONIALS } from '@/app/data/testimonials';
+import { LuFacebook, LuInstagram } from 'react-icons/lu';
+import { PiTiktokLogo } from "react-icons/pi";
+import TestimonialCarousel from './testimonial-carousel';
 
 export default function Testimonials() {
+  const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_URL;
+  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_PAGE_URL;
+  const tiktokUrl = process.env.NEXT_PUBLIC_TIKTOK_PAGE_URL;
+
   return (
-    <section className='relative pb-16 overflow-hidden w-full' id='testimonials'>
+    <section
+      className='relative pb-16 overflow-hidden w-full'
+      id='testimonials'
+    >
       <div className='w-full relative pt-14 pb-0 lg:pb-14 z-10 bg-teal-500 mb-10'>
         {/* Text Section */}
-        <div className='flex flex-col items-center text-center max-w-3xl mx-auto px-6 sm:px-8 lg:px-16'>
-          <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white mb-8 sm:mb-10 lg:mb-12 hover:scale-105 transition-transform duration-300'>
+        <div className='flex flex-col items-center text-center max-w-6xl mx-auto px-6 sm:px-8 lg:px-16'>
+          <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-white'>
             Follow Iyasu. Let&apos;s Feel Better Together!
           </h2>
+
+          {/* Social Media Icons */}
+          <div className='flex space-x-6 mt-8 mb-12'>
+            <a
+              href={facebookUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Facebook'
+              title='Follow us on Facebook'
+            >
+              <LuFacebook className='w-8 h-8 hover:scale-150 transition-transform duration-300 text-white' />
+            </a>
+            <a
+              href={instagramUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Instagram'
+              title='Follow us on Instagram'
+            >
+              <LuInstagram className='w-8 h-8 text-white hover:scale-150 transition-transform duration-300' />
+            </a>
+            <a
+              href={tiktokUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='TikTok'
+              title='Follow us on TikTok'
+            >
+              <PiTiktokLogo className='w-8 h-8 text-white hover:scale-150 transition-transform duration-300' />
+            </a>
+          </div>
         </div>
 
         {/* Carousel Container */}
-        <TestimonialCarousel testimonials={TESTIMONIALS}/>
+        <TestimonialCarousel testimonials={TESTIMONIALS} />
       </div>
 
       {/* SVG background for visual appeal */}
@@ -31,5 +71,5 @@ export default function Testimonials() {
         </svg>
       </div>
     </section>
-  )
+  );
 }
