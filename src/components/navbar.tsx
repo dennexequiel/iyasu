@@ -71,14 +71,14 @@ export default function Navbar() {
         isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'
       }`}
     >
-      <div className='container mx-auto px-4 md:px-8 py-4 flex justify-between items-start'>
+      <div className='container mx-auto px-4 md:px-8 py-4 flex justify-between items-center'>
         <Link href='/' className='inline-block'>
           <Logo />
         </Link>
 
         {/* Hamburger menu for mobile */}
         <button
-          className={`lg:hidden focus:outline-none transition-colors duration-300 ${
+          className={`lg:hidden focus:outline-none transition-colors duration-300 self-start ${
             isScrolled || isMenuOpen ? 'text-teal-500' : 'text-white'
           }`}
           onClick={toggleMenu}
@@ -157,12 +157,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      {isMenuOpen && (
-        <div
-          className='fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300 ease-in-out'
-          onClick={toggleMenu}
-        ></div>
-      )}
     </nav>
   );
 }
