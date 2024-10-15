@@ -1,14 +1,8 @@
 'use client';
 
-import { ArrowLeft } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
-interface Product {
-  title: string;
-  shopeeLink: string;
-  lazadaLink: string;
-  tiktokLink: string;
-}
+import { FaArrowLeft } from "react-icons/fa";
+import { Product } from '../data/products';
 
 interface ShopPopupProps {
   isOpen: boolean;
@@ -70,7 +64,7 @@ export function ShopPopup({ isOpen, onClose, product }: ShopPopupProps) {
           onClick={onClose}
           className='uppercase font-bold flex items-center justify-center mt-6 text-neutral-500 hover:text-teal-500 transition duration-300 cursor-pointer'
         >
-          <ArrowLeft className='w-4 h-4 mr-1' />
+          <FaArrowLeft    className='w-4 h-4 mr-1' />
           Back
         </a>
       </div>
