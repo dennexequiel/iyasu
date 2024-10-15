@@ -1,6 +1,7 @@
 'use client';
 
 import contactImage from '@/app/images/contact.png';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { z } from 'zod';
@@ -138,16 +139,51 @@ export default function Contact() {
     } transition duration-300 px-4 py-2`;
   };
 
+  // Typewriter text
+  const text = "We're a message away";
+  const typewriterVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+  const letterVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 200,
+      },
+    },
+  };
+
   return (
     <section
       className='bg-white max-w-screen-2xl md:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col md:flex-row py-16 px-4 md:px-8'
       id='contact'
     >
       {/* Form Section */}
-      <div className='w-full md:w-1/2 md:pr-8 mb-8 md:mb-0'>
-        <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-8 sm:mb-10 lg:mb-12 hover:scale-105 transition-transform duration-300'>
-          We’re a message away
-        </h2>
+      <div className='w-full lg:w-1/2 lg:pr-8 mb-8 lg:mb-0'>
+        <motion.h2
+          className='text-center lg:text-start text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-8 sm:mb-10 lg:mb-12'
+          variants={typewriterVariants}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: false }}
+        >
+          {text.split('').map((char, index) => (
+            <motion.span key={index} variants={letterVariants}>
+              {char}
+            </motion.span>
+          ))}
+        </motion.h2>
+
         {/* <p className='text-base mb-8 font-poppins w-full xl:w-10/12'>
           We would love to hear from you. Please fill out the form below and we
           will get back to you as soon as possible.
@@ -247,7 +283,7 @@ export default function Contact() {
       </div>
 
       {/* Image Section */}
-      <div className='hidden md:block w-full md:w-1/2 bg-blue-50 rounded-2xl overflow-hidden'>
+      <div className='hidden lg:block w-full lg:w-1/2 bg-blue-50 rounded-2xl overflow-hidden'>
         <Image
           src={contactImage}
           alt='Get in touch image'
