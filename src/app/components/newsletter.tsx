@@ -85,7 +85,7 @@ const SuccessPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => (
         onClick={onClose}
         className='uppercase font-bold flex items-center justify-center mt-6 text-neutral-500 hover:text-teal-500 transition duration-300 cursor-pointer'
       >
-        <FaArrowLeft    className='w-4 h-4 mr-1' />
+        <FaArrowLeft className='w-4 h-4 mr-1' />
         Back
       </a>
     </div>
@@ -169,7 +169,7 @@ export default function Newsletter() {
         <h2 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-4'>
           Be the First to Get Updates
         </h2>
-        <p className='text-lg text-gray-700 mb-6 font-poppins'>
+        <p className='text-base mb-8 font-poppins text-justify md:text-center'>
           Want to keep in touch? Drop your email below to get the latest
           updates, special offers, and wellness tips from Iyasu.
         </p>

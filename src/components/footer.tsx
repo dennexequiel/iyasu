@@ -16,7 +16,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className='bg-white font-poppins py-8'>
+    <footer className='bg-white font-poppins pb-8'>
       <div className='container mx-auto px-4 md:px-8'>
         <div className='flex flex-col md:flex-row justify-between items-start'>
           <div className='flex flex-col md:flex-row w-full md:w-auto space-y-6 md:space-y-0 md:space-x-8'>

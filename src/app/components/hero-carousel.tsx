@@ -225,7 +225,7 @@ export default function HeroCarousel() {
             Heal Simply. Live Fully.
           </motion.h1>
           <motion.p
-            className='text-base sm:text-lg md:text-xl lg:text-2xl mb-8 font-poppins whitespace-normal'
+            className='text-base sm:text-lg md:text-xl lg:text-2xl mb-8 font-poppins whitespace-normal text-justify'
             variants={textVariants}
             initial="hidden"
             whileInView="visible"

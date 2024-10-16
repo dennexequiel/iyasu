@@ -75,7 +75,7 @@ export default function HealingMadeSimple() {
         id='healing-made-simple'
       >
         <div className='w-full relative z-10'>
-          <div className='flex flex-col sm:items-start md:items-center text-left md:text-center max-w-3xl mx-auto'>
+          <div className='flex flex-col items-center text-center max-w-3xl mx-auto'>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0, rotate: 360 }}
@@ -85,13 +85,13 @@ export default function HealingMadeSimple() {
                 src={logo}
                 alt='Iyasu U Logo'
                 width={50}
-                className='mb-6 h-auto'
+                className='mb-6 h-auto text-center'
               />
             </motion.div>
             <h1 className='text-3xl leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight font-bold text-teal-500 mb-6'>
               Healing Made Simple
             </h1>
-            <p className='text-base mb-8 lg:mb-20 font-poppins'>
+            <p className='text-base mb-8 lg:mb-20 font-poppins text-justify'>
               Busy lives, simple solutions. Iyasu offers natural, effective
               relief from pain and stress. Our products are inspired by
               traditional healing methods and designed for easy use.
