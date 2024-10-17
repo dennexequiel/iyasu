@@ -39,6 +39,12 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Iyasu - Heal Simply, Live Fully',
   description: 'Natural healing products for pain relief and stress management',
+  openGraph: {
+    title: 'Iyasu - Heal Simply, Live Fully',
+    description: 'Made to help you heal and stay productive every day.',
+    siteName: 'Iyasu',
+    url: 'https://www.iyasu.com',
+  },
 };
 
 export default function RootLayout({
