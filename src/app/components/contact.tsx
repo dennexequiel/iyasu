@@ -1,6 +1,6 @@
 'use client';
 
-import contactImage from '@/app/images/contact.png';
+import contactImage from '@/app/images/heal-simply-live-fully.jpg';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -165,7 +165,7 @@ export default function Contact() {
 
   return (
     <section
-      className='bg-white max-w-screen-2xl md:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col md:flex-row py-16 px-4 md:px-8'
+      className='bg-white max-w-screen-2xl md:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col md:flex-row pt-16 pb-8 px-4 md:px-8'
       id='contact'
     >
       {/* Form Section */}
@@ -286,7 +286,7 @@ export default function Contact() {
       <div className='hidden lg:block w-full lg:w-1/2 bg-blue-50 rounded-2xl overflow-hidden'>
         <Image
           src={contactImage}
-          alt='Get in touch image'
+          alt="Smiling woman in a yellow sweater by a laptop with the text 'HEAL SIMPLY, LIVE FULLY' and the Iyasu logo."
           width={600}
           height={600}
           className='object-cover w-full h-full rounded-2xl'
