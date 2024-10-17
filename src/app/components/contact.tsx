@@ -216,6 +216,7 @@ export default function Contact() {
               onChange={handleChange}
               required
               className={`${getInputClassName('name')} rounded-full`}
+              placeholder='Enter your full name'
             />
             {errors.name &&
               errors.name.map((error, index) => (
@@ -236,6 +237,7 @@ export default function Contact() {
               onChange={handleChange}
               required
               className={`${getInputClassName('email')} rounded-full`}
+              placeholder='Enter your email address'
             />
             {errors.email &&
               errors.email.map((error, index) => (
