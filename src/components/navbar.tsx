@@ -24,16 +24,13 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     if (isMenuOpen) {
-      // If closing, fade out backdrop first
       const backdrop = document.querySelector('.bg-black.bg-opacity-50');
       if (backdrop) {
         backdrop.classList.remove('opacity-100');
         backdrop.classList.add('opacity-0');
       }
-      // Then close menu after a short delay
       setTimeout(() => setIsMenuOpen(false), 300);
     } else {
-      // If opening, show menu immediately
       setIsMenuOpen(true);
     }
   };
@@ -43,15 +40,13 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
-  const Logo = () => (
+  const Logo = ({ className }: { className?: string }) => (
     <svg
       width='90'
       viewBox='0 0 145 54'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className={`w-auto h-12 transition-colors duration-300 ${
-        isScrolled || isMenuOpen ? 'fill-teal-500' : 'fill-white'
-      }`}
+      className={`w-auto h-12 transition-colors duration-300 ${className}`}
       aria-label='Iyasu Logo'
     >
       <g clipPath='url(#a)'>
@@ -73,13 +68,13 @@ export default function Navbar() {
     >
       <div className='container mx-auto px-4 md:px-8 py-4 flex justify-between items-center'>
         <Link href='/' className='inline-block'>
-          <Logo />
+          <Logo className={isScrolled ? 'fill-teal-500' : 'fill-white'} />
         </Link>
 
         {/* Hamburger menu for mobile */}
         <button
           className={`lg:hidden focus:outline-none transition-colors duration-300 self-start ${
-            isScrolled || isMenuOpen ? 'text-teal-500' : 'text-white'
+            isScrolled ? 'text-teal-500' : 'text-white'
           }`}
           onClick={toggleMenu}
           aria-label='Toggle menu'
@@ -106,7 +101,7 @@ export default function Navbar() {
           <div className='container mx-auto px-4 md:px-8 py-4 lg:py-0 h-full lg:h-auto overflow-y-auto'>
             <div className='flex justify-between items-start lg:hidden mt-4 mb-8'>
               <Link href='/' onClick={() => setIsMenuOpen(false)}>
-                <Logo />
+                <Logo className='fill-teal-500' />
               </Link>
               <button
                 className='text-neutral-400 focus:outline-none'
