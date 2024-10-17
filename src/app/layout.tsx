@@ -1,11 +1,12 @@
-import CustomCursor from '@/components/custom-cursor'
-import Footer from '@/components/footer'
-import Navbar from '@/components/navbar'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import localFont from 'next/font/local'
-import './globals.css'
+import CustomCursor from '@/components/custom-cursor';
+import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
+import { NewsletterPopup } from './components/newsletter-popup';
+import './globals.css';
 
 const avenir = localFont({
   src: [
@@ -26,33 +27,34 @@ const avenir = localFont({
     },
   ],
   variable: '--font-avenir',
-})
+});
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-poppins',
-})
+});
 
 export const metadata: Metadata = {
   title: 'Iyasu - Heal Simply, Live Fully',
   description: 'Natural healing products for pain relief and stress management',
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${avenir.variable} ${poppins.variable}`}>
-      <body className="font-avenir">
+    <html lang='en' className={`${avenir.variable} ${poppins.variable}`}>
+      <body className='font-avenir'>
         <Navbar />
         {children}
         <Footer />
         <CustomCursor />
         <SpeedInsights />
+        <NewsletterPopup />
       </body>
     </html>
-  )
+  );
 }
