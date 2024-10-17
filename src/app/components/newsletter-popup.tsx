@@ -100,6 +100,7 @@ export const NewsletterPopup = () => {
                   style={{ objectFit: 'cover' }}
                   priority
                   className='rounded-t-3xl md:rounded-tr-none md:rounded-l-3xl'
+                  placeholder='blur'
                 />
               </div>
               <div className='w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center'>
