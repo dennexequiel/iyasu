@@ -111,7 +111,7 @@ export const NewsletterForm = ({ onSuccess, onError }: NewsletterFormProps) => {
         <input
           type='email'
           name='email'
-          placeholder='name@email.com'
+          placeholder='name@domain.com'
           value={email}
           onChange={(e) => handleEmailChange(e.target.value)}
           className={`border ${
