@@ -27,6 +27,7 @@ const avenir = localFont({
     },
   ],
   variable: '--font-avenir',
+  display: 'swap',
 });
 
 const poppins = Poppins({
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={`${avenir.variable} ${poppins.variable}`}>
+    <html lang='en' className={`${avenir.variable} ${poppins.variable} font-sans`}>
       <body className='font-avenir'>
         <Navbar />
         {children}
