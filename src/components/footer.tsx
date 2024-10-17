@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { LuFacebook, LuInstagram } from "react-icons/lu";
-import { PiTiktokLogo } from "react-icons/pi";
+import { LuFacebook, LuInstagram } from 'react-icons/lu';
+import { PiTiktokLogo } from 'react-icons/pi';
 
 export default function Footer() {
   const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_PAGE_URL;
@@ -16,10 +16,11 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className='bg-white font-poppins pb-8'>
+    <footer className='bg-white font-poppins py-8'>
       <div className='container mx-auto px-4 md:px-8'>
         <div className='flex flex-col md:flex-row justify-between items-start'>
           <div className='flex flex-col md:flex-row w-full md:w-auto space-y-6 md:space-y-0 md:space-x-8'>
+            {/* Logo */}
             {/* <div className='md:w-auto'>
               <Link href='/'>
                 <svg
@@ -50,13 +51,14 @@ export default function Footer() {
                 {contactEmail}
               </a>
             </div>
-            <div className='text-left'>
+            {/* Address */}
+            {/* <div className='text-left'>
               <p>
                 Fort Legend Tower, 31st St. cor. 3rd Ave.
                 <br />
                 Bonifacio Global City, Taguig City, Philippines
               </p>
-            </div>
+            </div> */}
           </div>
           <div className='flex flex-col md:items-end w-full md:w-auto mt-6 md:mt-0'>
             <div className='flex space-x-4 justify-start md:justify-end mb-4'>
@@ -67,7 +69,7 @@ export default function Footer() {
                 aria-label='Facebook'
                 title='Follow us on Facebook'
               >
-                <LuFacebook className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300'/>
+                <LuFacebook className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300' />
               </a>
               <a
                 href={instagramUrl}
@@ -76,7 +78,7 @@ export default function Footer() {
                 aria-label='Instagram'
                 title='Follow us on Instagram'
               >
-                <LuInstagram className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300'/>
+                <LuInstagram className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300' />
               </a>
               <a
                 href={tiktokUrl}
@@ -85,7 +87,7 @@ export default function Footer() {
                 aria-label='TikTok'
                 title='Follow us on TikTok'
               >
-                <PiTiktokLogo className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300'/>
+                <PiTiktokLogo className='w-6 h-6 text-teal-500 hover:scale-150 transition-transform duration-300' />
               </a>
             </div>
             <p className='text-left md:text-right'>
