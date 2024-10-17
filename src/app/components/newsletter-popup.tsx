@@ -2,7 +2,7 @@
 
 import newsletterImage from '@/app/images/heal-simply-live-fully.jpg';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { NewsletterForm } from './newsletter-form';
 import NewsletterSuccessPopup from './newsletter-success-popup';
@@ -27,6 +27,8 @@ export const NewsletterPopup = () => {
   // State to manage the visibility of the popup and success message
   const [isVisible, setIsVisible] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  // Ref to store the scroll event listener for easy removal
+  const scrollListenerRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     // Check if the popup has been shown or if the user has subscribed
@@ -38,33 +40,45 @@ export const NewsletterPopup = () => {
     if (!hasSeenPopup && !hasSubscribed) {
       // Show the popup after a delay
       const timer = setTimeout(() => {
-        setIsVisible(true);
-        sessionStorage.setItem(NEWSLETTER_POPUP_SHOWN_KEY, 'true');
+        showPopup();
       }, NEWSLETTER_POPUP_DELAY);
 
       // Show the popup when the user scrolls past a certain point
       const handleScroll = () => {
         if (window.scrollY > NEWSLETTER_POPUP_SCROLL_TRIGGER) {
-          setIsVisible(true);
-          sessionStorage.setItem(NEWSLETTER_POPUP_SHOWN_KEY, 'true');
-          window.removeEventListener('scroll', handleScroll);
-          clearTimeout(timer);
+          showPopup();
         }
       };
 
       window.addEventListener('scroll', handleScroll);
+      scrollListenerRef.current = handleScroll;
 
       // Cleanup event listener and timer on component unmount
       return () => {
         clearTimeout(timer);
-        window.removeEventListener('scroll', handleScroll);
+        if (scrollListenerRef.current) {
+          window.removeEventListener('scroll', scrollListenerRef.current);
+        }
       };
     }
   }, []);
 
+  // Function to show the popup and remove the scroll listener
+  const showPopup = () => {
+    setIsVisible(true);
+    sessionStorage.setItem(NEWSLETTER_POPUP_SHOWN_KEY, 'true');
+    if (scrollListenerRef.current) {
+      window.removeEventListener('scroll', scrollListenerRef.current);
+    }
+    // Prevent scrolling on the body when the popup is visible
+    document.body.style.overflow = 'hidden';
+  };
+
   // Handle closing the popup
   const handleClose = () => {
     setIsVisible(false);
+    // Re-enable scrolling on the body
+    document.body.style.overflow = 'auto';
   };
 
   // Handle successful newsletter subscription
@@ -72,6 +86,11 @@ export const NewsletterPopup = () => {
     setShowSuccessPopup(true);
     setIsVisible(false);
     localStorage.setItem(NEWSLETTER_SUBSCRIBED_KEY, 'true');
+    if (scrollListenerRef.current) {
+      window.removeEventListener('scroll', scrollListenerRef.current);
+    }
+    // Re-enable scrolling on the body
+    document.body.style.overflow = 'auto';
   };
 
   // Handle errors during newsletter subscription
@@ -84,6 +103,7 @@ export const NewsletterPopup = () => {
       {isVisible && (
         <div className='fixed inset-0 backdrop-blur-sm backdrop-brightness-50 bg-white/10 flex items-center justify-center p-4 z-50'>
           <div className='bg-white rounded-3xl max-w-2xl w-full sm:w-[90%] md:max-w-4xl overflow-hidden relative'>
+            {/* Close button */}
             <button
               onClick={handleClose}
               className='absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10'
@@ -92,6 +112,7 @@ export const NewsletterPopup = () => {
               <IoMdClose className='w-6 h-6' />
             </button>
             <div className='flex flex-col md:flex-row h-full'>
+              {/* Image section */}
               <div className='w-full md:w-1/2 relative h-60 md:h-auto lg:h-[350px] '>
                 <Image
                   src={newsletterImage}
@@ -103,6 +124,7 @@ export const NewsletterPopup = () => {
                   placeholder='blur'
                 />
               </div>
+              {/* Content section */}
               <div className='w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center'>
                 <div>
                   <h2 className='text-2xl md:text-3xl font-bold text-center mb-4 text-teal-500'>
@@ -112,6 +134,7 @@ export const NewsletterPopup = () => {
                     Stay updated with the latest news, special offers, and
                     wellness tips from Iyasu.
                   </p>
+                  {/* Newsletter subscription form */}
                   <NewsletterForm
                     onSuccess={handleSuccess}
                     onError={handleError}
@@ -122,6 +145,7 @@ export const NewsletterPopup = () => {
           </div>
         </div>
       )}
+      {/* Success popup */}
       {showSuccessPopup && (
         <NewsletterSuccessPopup onClose={() => setShowSuccessPopup(false)} />
       )}
