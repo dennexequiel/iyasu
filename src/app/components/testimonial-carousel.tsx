@@ -95,7 +95,7 @@ export default function TestimonialCarousel({ testimonials }: Props) {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <StarRating rating={testimonial.rating} />
-                <blockquote className='text-lg mb-6 min-h-56 md:min-h-72 lg:min-h-80 xl:min-h-48 font-poppins'>
+                <blockquote className='text-base mb-6 min-h-56 md:min-h-72 lg:min-h-80 xl:min-h-48 font-poppins'>
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 <div className='flex flex-col items-center'>

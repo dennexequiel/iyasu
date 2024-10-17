@@ -33,7 +33,7 @@ function ProductCard({
         <h3 className='text-xl font-medium my-4 font-poppins text-teal-500 mb-4'>
           {product.title}
         </h3>
-        <p className='text-sm text-gray-600 mb-6 flex-grow font-poppins'>
+        <p className='text-sm mb-6 flex-grow font-poppins'>
           {product.experienceDescription}
         </p>
         <button

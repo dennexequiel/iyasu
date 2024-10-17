@@ -33,7 +33,7 @@ function FeatureCard({
       <h3 className={`text-xl font-medium font-poppins ${titleColor} mt-2`}>
         {title}
       </h3>
-      <p className='text-base text-gray-600 mt-2 font-poppins px-4 md:px-8'>
+      <p className='text-base mt-2 font-poppins px-4 md:px-8'>
         {description}
       </p>
     </motion.div>

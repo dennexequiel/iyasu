@@ -29,7 +29,7 @@ function ProductCard({
         />
       </div>
       <h3 className='text-xl font-medium my-4 font-poppins'>{product.title}</h3>
-      <p className='text-gray-600 text-sm mb-4 flex-grow font-poppins'>
+      <p className='text-sm mb-4 flex-grow font-poppins'>
         {product.description}
       </p>
       <div className='flex items-center justify-start mb-4'>
