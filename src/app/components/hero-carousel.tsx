@@ -9,7 +9,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useScrollTo } from '../hooks/useScrollTo';
 
 const OPTIONS: EmblaOptionsType = { loop: true };
@@ -23,15 +23,13 @@ const carouselItems = [
   { id: 3, image: hero3, alt: 'Iyasu Background 3' },
 ];
 
-type DotButtonPropType = {
+type DotButtonProps = {
   index: number;
   selected: boolean;
   onClick: () => void;
 };
 
-const DotButton: React.FC<DotButtonPropType> = (props) => {
-  const { selected, onClick, index } = props;
-
+const DotButton = ({ selected, onClick, index }: DotButtonProps) => {
   return (
     <button
       className={`w-3 h-3 rounded-full mx-1 transition-all duration-300 ${
